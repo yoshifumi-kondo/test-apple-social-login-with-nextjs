@@ -35,3 +35,7 @@ const SocialLoginButton: FC<{
 export const AppleLoginButton = () => (
   <SocialLoginButton providerName="Apple" apiPath="/api/passport-apple" />
 );
+
+export const GoogleLoginButton = () => (
+  <SocialLoginButton providerName="GOOGLE" apiPath="/api/passport-google" />
+);

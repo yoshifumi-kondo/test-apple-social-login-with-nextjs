@@ -1,10 +1,9 @@
-import { Button } from "@mui/material";
-import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import { useState } from "react";
-import { AppleLoginButton } from "../components/SocialLoginButton";
+import {
+  AppleLoginButton,
+  GoogleLoginButton,
+} from "../components/SocialLoginButton";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -18,6 +17,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <AppleLoginButton />
+        <GoogleLoginButton />
       </main>
     </div>
   );
