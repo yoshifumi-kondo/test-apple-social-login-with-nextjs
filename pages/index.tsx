@@ -3,13 +3,24 @@ import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
+  const [info, setInfo] = useState({
+    error: false,
+    message: "click the above button",
+  });
   const onClickHandler = async () => {
-    const res = await axios("/api/passport-apple");
-    // const res = await axios("/api/hello");
-    await console.log(res);
+    try {
+      const res = await axios("/api/passport-apple");
+      await console.log(res);
+    } catch (e: any) {
+      setInfo({
+        error: true,
+        message: e.response.data as string,
+      });
+    }
   };
   return (
     <div className={styles.container}>
@@ -20,10 +31,11 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <div></div>
         <Button variant="contained" onClick={onClickHandler}>
           get Method
         </Button>
+        <p style={{ margin: 5 }}>{info.error && "error"}</p>
+        <p style={{ margin: 5 }}>{info.message}</p>
       </main>
 
       <footer className={styles.footer}>
