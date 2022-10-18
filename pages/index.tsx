@@ -1,9 +1,16 @@
+import { Button } from "@mui/material";
+import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
+  const onClickHandler = async () => {
+    const res = await axios("/api/passport-apple");
+    // const res = await axios("/api/hello");
+    await console.log(res);
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -13,14 +20,10 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <body>
-          <div
-            id="appleid-signin"
-            data-color="black"
-            data-border="true"
-            data-type="sign in"
-          ></div>
-        </body>
+        <div></div>
+        <Button variant="contained" onClick={onClickHandler}>
+          get Method
+        </Button>
       </main>
 
       <footer className={styles.footer}>
