@@ -4,24 +4,10 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
+import { AppleLoginButton } from "../components/SocialLoginButton";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
-  const [info, setInfo] = useState({
-    error: false,
-    message: "click the above button",
-  });
-  const onClickHandler = async () => {
-    try {
-      const res = await axios("/api/passport-apple");
-      await console.log(res);
-    } catch (e: any) {
-      setInfo({
-        error: true,
-        message: e.response.data as string,
-      });
-    }
-  };
   return (
     <div className={styles.container}>
       <Head>
@@ -31,25 +17,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <Button variant="contained" onClick={onClickHandler}>
-          get Method
-        </Button>
-        <p style={{ margin: 5 }}>{info.error && "error"}</p>
-        <p style={{ margin: 5 }}>{info.message}</p>
+        <AppleLoginButton />
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   );
 };
