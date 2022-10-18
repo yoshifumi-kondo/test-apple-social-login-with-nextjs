@@ -1,5 +1,4 @@
 // import * as bodyParser from "body-parser";
-import { json } from "body-parser";
 import { NextApiRequest, NextApiResponse } from "next";
 import passport from "passport";
 import AppleStrategy from "passport-apple";

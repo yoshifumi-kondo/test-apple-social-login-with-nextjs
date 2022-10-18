@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import axios from "axios";
+import Link from "next/link";
 import React, { FC, useState } from "react";
 
 const SocialLoginButton: FC<{
@@ -37,5 +38,18 @@ export const AppleLoginButton = () => (
 );
 
 export const GoogleLoginButton = () => (
-  <SocialLoginButton providerName="GOOGLE" apiPath="/api/passport-google" />
+  <Link href="/api/passport-google" passHref>
+    <button
+      style={{
+        border: "1px solid black",
+        backgroundColor: "white",
+        borderRadius: "10px",
+        height: "50px",
+        width: "200px",
+        cursor: "pointer",
+      }}
+    >
+      CONNECT TO GOOGLE
+    </button>
+  </Link>
 );
